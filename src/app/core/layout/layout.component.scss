@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar {
+  display: flex;
+  background: #EFEFEF;
+  min-height: 54px;
+}
+
+.wrapper {
+  display: flex;
+
+  aside {
+    display: flex;
+    width: 240px;
+  }
+}
