@@ -7,8 +7,10 @@ import {SubNavService} from "./sub-nav.service";
 })
 export class SubNavDirective {
 
-  constructor(readonly tpl: TemplateRef<any>, private readonly subNavService: SubNavService) {
-    this.subNavService.tpl = tpl;
+  constructor(
+    readonly tpl: TemplateRef<any>,
+    private readonly subNavService: SubNavService) {
+    this.template = tpl;
   }
 
   set template(tpl: TemplateRef<any>) {
@@ -20,6 +22,7 @@ export class SubNavDirective {
   }
 
   ngOnDestroy(): void {
+    console.log('DESTROY');
     this.subNavService.clear();
   }
 

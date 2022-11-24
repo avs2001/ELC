@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  justify-content: stretch;
+  padding: 10px;
+
+  .row {
+    display: flex;
+    .col{
+      padding: 10px;
+    }
+  }
+
+}
