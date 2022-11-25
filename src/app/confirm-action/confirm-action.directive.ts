@@ -14,9 +14,7 @@ export class ConfirmActionDirective {
   doConfirm() {
     const dialogRef = this.dialog.open(ConfirmActionComponent, {});
     dialogRef.afterClosed().subscribe((confirmed: any) => {
-      if (confirmed) {
-        this.confirm.emit();
-      }
+      this.confirm.emit(confirmed);
     });
   }
 
