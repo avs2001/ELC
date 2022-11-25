@@ -1,10 +1,12 @@
-<div>{{title}}</div>
-<div>{{msg}}</div>
+<ng-container [ngTemplateOutlet]="data.headerTemplateRef"></ng-container>
+
+<div>Message</div>
+
 <div mat-dialog-actions>
-  <button mat-flat-button [mat-dialog-close]="false" cdkFocusInitial>
-    {{declineBtnTxt}}
+  <button mat-flat-button [mat-dialog-close]="false">
+    No
   </button>
   <button mat-flat-button [mat-dialog-close]="true">
-    {{confirmBtnTxt}}
+    Yes
   </button>
 </div>

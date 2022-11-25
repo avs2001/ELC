@@ -1,1 +1,11 @@
+<button confirmAction [headerTemplateRef]="headerRef" (confirm)="delete($event)">
+    Confirm
+</button>
+
+<ng-template #headerRef>
+    <div class="tooltip">
+        Header
+    </div>
+</ng-template>
+
 <router-outlet></router-outlet>
