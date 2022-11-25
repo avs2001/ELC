@@ -1,11 +1,10 @@
-
-
-<div>Are you sure?</div>
+<div>{{title}}</div>
+<div>{{msg}}</div>
 <div mat-dialog-actions>
   <button mat-flat-button [mat-dialog-close]="false" cdkFocusInitial>
-    No
+    {{declineBtnTxt}}
   </button>
   <button mat-flat-button [mat-dialog-close]="true">
-    Yes
+    {{confirmBtnTxt}}
   </button>
 </div>
