@@ -9,6 +9,8 @@ import {ConfirmActionComponent} from './shared/components/UI/confirm-action/conf
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from "@angular/material/button";
 import {HttpClientModule} from "@angular/common/http";
+import {UserListComponent} from "./shared/components/user-list/user-list.component";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {HttpClientModule} from "@angular/common/http";
     ConfirmActionComponent,
     ConfirmActionDirective,
     MatButtonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    UserListComponent,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

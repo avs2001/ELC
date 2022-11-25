@@ -11,7 +11,7 @@ export class AppComponent {
 
   http = inject(HttpClient);
 
-  users$ = this.http.get('https://jsonplaceholder.typicode.com/users');
+  users$ = this.http.get<any[]>('https://jsonplaceholder.typicode.com/users');
 
   delete($event: boolean) {
     console.log('CAN DELETE:', $event);

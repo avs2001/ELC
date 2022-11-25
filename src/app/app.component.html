@@ -1,5 +1,22 @@
 <router-outlet></router-outlet>
-<pre>{{users$ | async | json}}</pre>
+<mat-card>
+  <mat-card-header>
+    <h4 mat-card-title>User 1</h4>
+  </mat-card-header>
+  <mat-card-content>
+    <kbm-user-list [data]="(users$ | async)!"></kbm-user-list>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <h4 mat-card-title>User 2</h4>
+  </mat-card-header>
+  <mat-card-content>
+    <kbm-user-list [data]="(users$ | async)!"></kbm-user-list>
+  </mat-card-content>
+</mat-card>
+
 <button mat-button
         [title]="'Terms of use'"
         [confirmBtnTxt]="'Accept'"
