@@ -4,7 +4,8 @@
     <h4 mat-card-title>User 1</h4>
   </mat-card-header>
   <mat-card-content>
-    <kbm-user-list [data]="(users$ | async)!"></kbm-user-list>
+    <kbm-user-list [data]="(users$ | async)!" [btns]="[deleteBtn]">
+    </kbm-user-list>
   </mat-card-content>
 </mat-card>
 
@@ -13,16 +14,23 @@
     <h4 mat-card-title>User 2</h4>
   </mat-card-header>
   <mat-card-content>
-    <kbm-user-list [data]="(users$ | async)!"></kbm-user-list>
+    <kbm-user-list [data]="(users$ | async)!" [btns]="[editBtn, deleteBtn]"></kbm-user-list>
   </mat-card-content>
 </mat-card>
 
-<button mat-button
-        [title]="'Terms of use'"
-        [confirmBtnTxt]="'Accept'"
-        [declineBtnTxt]="'Decline'"
-        [content]="confirmMessage"
-        (confirmAction)="delete($event)">CONFIRM
+<ng-template #deleteBtn let-index="index">
+  <button mat-button [title]="'Terms of use'" [confirmBtnTxt]="'Accept'" [declineBtnTxt]="'Decline'"
+    [content]="deleteMessage" (confirmAction)="delete($event)">Delete user {{index}}
+  </button>
+</ng-template>
+
+<ng-template #editBtn let-index="index">
+  <button mat-button>Edit user {{index}}
+  </button>
+</ng-template>
+
+<button mat-button [title]="'Terms of use'" [confirmBtnTxt]="'Accept'" [declineBtnTxt]="'Decline'"
+  [content]="confirmMessage" (confirmAction)="delete($event)">CONFIRM
 </button>
 
 <ng-template #confirmMessage let-ref>
@@ -38,4 +46,8 @@
     <li (click)="ref.close(false)">Disapprove from here</li>
     <li>Item 1</li>
   </ul>
+</ng-template>
+
+<ng-template #deleteMessage let-ref>
+  Are you sure you want to delete user?
 </ng-template>
