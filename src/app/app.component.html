@@ -1,5 +1,10 @@
 <router-outlet></router-outlet>
-<button [title]="'Terms of use'" [confirmBtnTxt]="'Accept'" [declineBtnTxt]="'Decline'" [content]="confirmMessage"
+<pre>{{users$ | async | json}}</pre>
+<button mat-button
+        [title]="'Terms of use'"
+        [confirmBtnTxt]="'Accept'"
+        [declineBtnTxt]="'Decline'"
+        [content]="confirmMessage"
         (confirmAction)="delete($event)">CONFIRM
 </button>
 
