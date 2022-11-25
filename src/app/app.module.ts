@@ -11,6 +11,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {HttpClientModule} from "@angular/common/http";
 import {UserListComponent} from "./shared/components/user-list/user-list.component";
 import {MatCardModule} from "@angular/material/card";
+import {ListActionsDirective} from "./shared/components/list-actions.directive";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {MatCardModule} from "@angular/material/card";
     MatButtonModule,
     AppRoutingModule,
     UserListComponent,
-    MatCardModule
+    MatCardModule,
+    ListActionsDirective
   ],
   providers: [],
   bootstrap: [AppComponent]

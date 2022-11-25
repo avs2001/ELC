@@ -4,7 +4,10 @@
     <h4 mat-card-title>User 1</h4>
   </mat-card-header>
   <mat-card-content>
-    <kbm-user-list [data]="(users$ | async)!" [btns]="[deleteBtn]">
+    <kbm-user-list [data]="(users$ | async)!">
+      <ng-container *kbmListActions="let row">
+        <button>EDIT</button>
+      </ng-container>
     </kbm-user-list>
   </mat-card-content>
 </mat-card>
@@ -14,40 +17,13 @@
     <h4 mat-card-title>User 2</h4>
   </mat-card-header>
   <mat-card-content>
-    <kbm-user-list [data]="(users$ | async)!" [btns]="[editBtn, deleteBtn]"></kbm-user-list>
+    <kbm-user-list [data]="(users$ | async)!">
+      <ng-container *kbmListActions="let row">
+        <button mat-button [msg]="'Do you want to delete this user?'" (confirmAction)="delete($event, row)">DELETE
+        </button>
+      </ng-container>
+    </kbm-user-list>
   </mat-card-content>
 </mat-card>
 
-<ng-template #deleteBtn let-index="index">
-  <button mat-button [title]="'Terms of use'" [confirmBtnTxt]="'Accept'" [declineBtnTxt]="'Decline'"
-    [content]="deleteMessage" (confirmAction)="delete($event)">Delete user {{index}}
-  </button>
-</ng-template>
 
-<ng-template #editBtn let-index="index">
-  <button mat-button>Edit user {{index}}
-  </button>
-</ng-template>
-
-<button mat-button [title]="'Terms of use'" [confirmBtnTxt]="'Accept'" [declineBtnTxt]="'Decline'"
-  [content]="confirmMessage" (confirmAction)="delete($event)">CONFIRM
-</button>
-
-<ng-template #confirmMessage let-ref>
-  <p>
-    Praesent a dignissim est, quis vehicula purus. Nulla ultrices, nisl id scelerisque dapibus, sapien erat porttitor
-    lorem, at porta est metus non mauris. Donec sollicitudin imperdiet odio non dignissim. Donec fermentum mollis
-    laoreet. Nullam egestas a enim quis sodales. Sed sodales mauris et ante volutpat, nec ultrices lacus tincidunt.
-    Vivamus varius consectetur nunc vel facilisis. Proin placerat vitae leo vel tristique. Duis dignissim mauris non
-    orci placerat, ut convallis nisl sollicitudin.
-  </p>
-  <ul>
-    <li (click)="ref.close(true)">Approve from here</li>
-    <li (click)="ref.close(false)">Disapprove from here</li>
-    <li>Item 1</li>
-  </ul>
-</ng-template>
-
-<ng-template #deleteMessage let-ref>
-  Are you sure you want to delete user?
-</ng-template>

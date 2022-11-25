@@ -1,7 +1,8 @@
-import { Component, Input, TemplateRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MatTableModule } from "@angular/material/table";
-import { ConfirmActionDirective } from '../UI/confirm-action/confirm-action.directive';
+import {Component, ContentChild, Input, TemplateRef} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {MatTableModule} from "@angular/material/table";
+import {ConfirmActionDirective} from '../UI/confirm-action/confirm-action.directive';
+import {ListActionsDirective} from "../list-actions.directive";
 
 @Component({
   selector: 'kbm-user-list',
@@ -13,7 +14,19 @@ import { ConfirmActionDirective } from '../UI/confirm-action/confirm-action.dire
 export class UserListComponent {
   @Input() data: any[] = [];
   @Input() btns: TemplateRef<any>[] = []
-  displayedColumns = ['id', 'name', 'username', 'email', 'btns'];
+
+
+  displayedColumns = ['id', 'name', 'username', 'email'];
+  actionsTpl!: TemplateRef<any>;
+
+  @ContentChild(ListActionsDirective)
+  set actions(action: ListActionsDirective) {
+    if (action) {
+      this.actionsTpl = action.tpl;
+      this.displayedColumns.push('btns');
+    }
+  }
+
 
   delete(event: any) {
 

@@ -13,7 +13,7 @@ export class AppComponent {
 
   users$ = this.http.get<any[]>('https://jsonplaceholder.typicode.com/users');
 
-  delete($event: boolean) {
+  delete($event: boolean, row: any) {
     console.log('CAN DELETE:', $event);
   }
 }
