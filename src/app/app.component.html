@@ -1,1 +1,19 @@
 <router-outlet></router-outlet>
+<button [title]="'Terms of use'" [confirmBtnTxt]="'Accept'" [declineBtnTxt]="'Decline'" [content]="confirmMessage"
+        (confirmAction)="delete($event)">CONFIRM
+</button>
+
+<ng-template #confirmMessage let-ref>
+  <p>
+    Praesent a dignissim est, quis vehicula purus. Nulla ultrices, nisl id scelerisque dapibus, sapien erat porttitor
+    lorem, at porta est metus non mauris. Donec sollicitudin imperdiet odio non dignissim. Donec fermentum mollis
+    laoreet. Nullam egestas a enim quis sodales. Sed sodales mauris et ante volutpat, nec ultrices lacus tincidunt.
+    Vivamus varius consectetur nunc vel facilisis. Proin placerat vitae leo vel tristique. Duis dignissim mauris non
+    orci placerat, ut convallis nisl sollicitudin.
+  </p>
+  <ul>
+    <li (click)="ref.close(true)">Approve from here</li>
+    <li (click)="ref.close(false)">Disapprove from here</li>
+    <li>Item 1</li>
+  </ul>
+</ng-template>
