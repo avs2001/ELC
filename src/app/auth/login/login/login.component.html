@@ -1,0 +1,11 @@
+<button (click)="login()">
+    authorize
+</button>
+
+<button (click)="getTenants()">
+    tenants
+</button>
+
+<div *ngIf="info">
+    {{info | json}}
+</div>
