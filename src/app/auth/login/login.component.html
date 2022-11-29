@@ -2,16 +2,15 @@
     Auth page
 </div>
 
-<button class="my-btn" *ngIf="!(authRepository.isLoggedIn$ | async); else logoutBtn" (click)="login()">
+<button class="my-btn" *ngIf="!(authRepository.isLoggedIn$ | async); else authorized" (click)="login()">
     authorize
 </button>
 
-<ng-template #logoutBtn>
+<ng-template #authorized>
     <button class="my-btn" (click)="logout()">
         logout
     </button>
+    <button class="my-btn my-btn-nav" (click)="navigateTo('/tenants')">
+        go to tenants
+    </button>
 </ng-template>
-
-<button class="my-btn my-btn-nav" (click)="navigateTo('/tenants')">
-    go to tenants
-</button>
