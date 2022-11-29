@@ -26,3 +26,8 @@ export interface UserInfo {
     userType: number,
     createdAt: number
 }
+
+export enum LoggedInCase {
+    USER_LOGGED_IN,
+    USER_NOT_LOGGED_IN
+}

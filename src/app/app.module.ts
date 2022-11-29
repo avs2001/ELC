@@ -1,3 +1,4 @@
+import { LoggedInUIAccessDirective } from './auth/logged-in-access.directive';
 import { AuthRepository } from './auth/auth.repository';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,14 +11,17 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DefaultOAuthInterceptor } from './auth/auth.interceptors';
 import { TenantComponent } from './tenant/tenant.component';
 import { LoginComponent } from './auth/login/login.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    TenantComponent
+    TenantComponent,
+    LoggedInUIAccessDirective
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
