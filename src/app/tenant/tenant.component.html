@@ -1,4 +1,4 @@
-<div>
+<div class="title">
     Tenants page
 </div>
 
@@ -6,6 +6,14 @@
     go to auth
 </button>
 
-<div *ngIf="authRepository.currentTenant$ | async">
+<div class="title">
+    Current Tenant
+</div>
+
+<div *ngIf="(authRepository.currentTenant$ | async); else noTenant">
     {{authRepository.currentTenant$ | async | json}}
 </div>
+
+<ng-template #noTenant>
+    No tenant defined yet
+</ng-template>

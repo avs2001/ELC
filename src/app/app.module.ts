@@ -1,4 +1,4 @@
-import { LoggedInUIAccessDirective } from './auth/logged-in-access.directive';
+import { LoggedInUIAccessDirective } from './ui-guards/logged-in-access.directive';
 import { AuthRepository } from './auth/auth.repository';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';

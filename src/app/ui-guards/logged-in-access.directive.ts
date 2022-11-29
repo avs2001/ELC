@@ -1,6 +1,6 @@
-import { LoggedInCase } from './auth.model';
+import { LoggedInCase } from '../auth/auth.model';
 import { take, Subject, takeUntil } from 'rxjs';
-import { AuthRepository } from './auth.repository';
+import { AuthRepository } from '../auth/auth.repository';
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
 @Directive({
@@ -22,7 +22,6 @@ export class LoggedInUIAccessDirective {
     }
 
     ngOnInit() {
-        console.log(this.loggedIn)
         this.authRepository.isLoggedIn$.pipe(takeUntil(this.unsubscribe$)).subscribe(isLoggedIn => {
             if ((isLoggedIn && this.loggedIn === LoggedInCase.USER_LOGGED_IN) ||
                 (!isLoggedIn && this.loggedIn === LoggedInCase.USER_NOT_LOGGED_IN)) {
