@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { OAuthStorage } from 'angular-oauth2-oidc';
+import { OAuthService } from 'angular-oauth2-oidc';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -7,18 +7,20 @@ import { Observable } from 'rxjs';
 export class DefaultOAuthInterceptor implements HttpInterceptor {
 
     constructor(
-        private authStorage: OAuthStorage
+        private oAuthService: OAuthService
     ) {
     }
 
     public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        let token = this.authStorage.getItem('access_token');
-        let header = 'Bearer ' + token;
-        let headers = req.headers
-            .set('Authorization', header);
+        let token = this.oAuthService.getAccessToken();
+        if (token) {
+            let header = 'Bearer ' + token;
+            let headers = req.headers
+                .set('Authorization', header);
 
-        req = req.clone({ headers });
+            req = req.clone({ headers });
+        }
 
         return next.handle(req)
 

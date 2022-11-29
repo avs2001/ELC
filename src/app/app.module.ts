@@ -1,3 +1,4 @@
+import { AuthRepository } from './auth/auth.repository';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -5,27 +6,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { OAuthModule } from 'angular-oauth2-oidc';
-import { LoginComponent } from './auth/login/login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DefaultOAuthInterceptor } from './auth/auth.interceptors';
+import { TenantComponent } from './tenant/tenant.component';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    TenantComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    OAuthModule.forRoot({
-      resourceServer: {
-        allowedUrls: ['https://api.diality.integration.kebormed.com'],
-        sendAccessToken: true
-      }
-    })
+    OAuthModule.forRoot()
   ],
   providers: [
+    AuthRepository,
     { provide: HTTP_INTERCEPTORS, useClass: DefaultOAuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]

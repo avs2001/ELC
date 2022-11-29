@@ -1,0 +1,16 @@
+<div>
+    Tenants page
+</div>
+
+<button class="my-btn">
+    view tenants
+</button>
+
+<button class="my-btn my-btn-nav" (click)="navigateTo('/login')">
+    go to auth
+</button>
+
+<div *ngIf="info">
+    {{info | json}}
+</div>
+
