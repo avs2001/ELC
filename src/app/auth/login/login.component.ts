@@ -12,7 +12,6 @@ import { LoggedInCase } from '../auth.model';
 export class LoginComponent {
   LoggedInCase = LoggedInCase;
   constructor(
-    public authRepository: AuthRepository,
     private authService: AuthService,
     private router: Router
   ) {
