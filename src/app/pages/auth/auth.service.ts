@@ -22,11 +22,14 @@ export class AuthService {
   configureOidc() {
     this.oAuthService.configure(environment.auth);
     this.oAuthService.tokenValidationHandler = new JwksValidationHandler();
+    // this refresh the token when expired
     this.oAuthService.setupAutomaticSilentRefresh();
     this.oAuthService.loadDiscoveryDocumentAndTryLogin().then(() => {
-      let token = this.oAuthService.getAccessToken();
-      this.authRepository.updateIsLoggedIn(!!token);
-      this.getLoggedInUserProfileInfo().pipe(take(1)).subscribe();
+      if(this.tokenIsValid()){
+        let token = this.oAuthService.getAccessToken();
+        this.authRepository.updateIsLoggedIn(!!token);
+        this.getLoggedInUserProfileInfo().pipe(take(1)).subscribe();
+      }
     });
   }
 
