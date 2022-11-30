@@ -12,19 +12,23 @@ import { AppComponent } from './app.component';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { SwitchComponent } from './shared-components/switch/switch.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     TenantComponent,
-    LoggedInUIAccessDirective
+    LoggedInUIAccessDirective,
+    SwitchComponent
   ],
   imports: [
     CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     OAuthModule.forRoot()
   ],
   providers: [

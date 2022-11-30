@@ -2,11 +2,11 @@
     Auth page
 </div>
 
-<button class="my-btn" *loggedInUIAccess="LoggedInCase.USER_NOT_LOGGED_IN" (click)="login()">
+<button class="my-btn my-btn-auth" *loggedInUIAccess="LoggedInCase.USER_NOT_LOGGED_IN" (click)="login()">
     authorize
 </button>
 
-<button class="my-btn" *loggedInUIAccess="LoggedInCase.USER_LOGGED_IN" (click)="logout()">
+<button class="my-btn my-btn-auth" *loggedInUIAccess="LoggedInCase.USER_LOGGED_IN" (click)="logout()">
     logout
 </button>
 <button class="my-btn my-btn-nav" *loggedInUIAccess="LoggedInCase.USER_LOGGED_IN" (click)="navigateTo('/tenants')">

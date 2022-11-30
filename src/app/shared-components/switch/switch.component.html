@@ -1,0 +1,12 @@
+<div class="my-switch">
+    <div class="label">
+        Show Tenant
+    </div>
+    <div class="switch">
+        <input #inputElement [checked]="value" type="checkbox" [disabled]="controlValueAccessorDisabled" />
+        <div class="slider round">
+            <span [ngClass]="{ checked: value, disabled: controlValueAccessorDisabled }">
+            </span>
+        </div>
+    </div>
+</div>

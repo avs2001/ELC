@@ -10,10 +10,18 @@
     Current Tenant
 </div>
 
-<div *ngIf="(authRepository.currentTenant$ | async); else noTenant">
+<div *ngIf="(authRepository.currentTenant$ | async) && showTenant; else noTenant" class="tenant">
     {{authRepository.currentTenant$ | async | json}}
 </div>
 
 <ng-template #noTenant>
-    No tenant defined yet
+    <div class="tenant">
+        No tenant defined yet
+    </div>
 </ng-template>
+
+<form [formGroup]="formGroup">
+    <kbm-switch formControlName="switch" (valueChange)="toggleTenant($event)"></kbm-switch>
+</form>
+
+<button (click)="resetForm()">Reset</button>
