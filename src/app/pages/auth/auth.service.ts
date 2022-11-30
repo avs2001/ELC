@@ -24,7 +24,7 @@ export class AuthService {
     this.oAuthService.tokenValidationHandler = new JwksValidationHandler();
     // this refresh the token when expired
     this.oAuthService.setupAutomaticSilentRefresh();
-    this.oAuthService.loadDiscoveryDocumentAndTryLogin().then(() => {
+    this.oAuthService.loadDiscoveryDocumentAndLogin().then(() => {
       if(this.tokenIsValid()){
         let token = this.oAuthService.getAccessToken();
         this.authRepository.updateIsLoggedIn(!!token);

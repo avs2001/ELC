@@ -1,5 +1,5 @@
-import { AuthRepository } from './../pages/auth/auth.repository';
-import { LoggedInCase } from './../pages/auth/auth.model';
+import { AuthRepository } from '../../pages/auth/auth.repository';
+import { LoggedInCase } from '../../pages/auth/auth.model';
 import { take, Subject, takeUntil } from 'rxjs';
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 

@@ -4,8 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthRepository } from './../auth/auth.repository';
 import { HarnessLoader } from '@angular/cdk/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ButtonHarness } from 'src/app/harnesses/button.harness';
-import { SwitchHarness } from 'src/app/harnesses/switch.harness';
+import { ButtonHarness } from 'src/app/shared/harnesses/button.harness';
+import { SwitchHarness } from 'src/app/shared/harnesses/switch.harness';
 
 import { TenantComponent } from './tenant.component';
 import {TestbedHarnessEnvironment} from "@angular/cdk/testing/testbed";

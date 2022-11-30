@@ -47,10 +47,6 @@ export class SwitchComponent implements ControlValueAccessor {
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  ngOnInit() {
-    console.log(this.value)
-  }
-
   private updateValue() {
     if (this.controlValueAccessorDisabled) {
       return;

@@ -1,8 +1,9 @@
+import { SwitchComponent } from './shared/components/switch/switch.component';
 import { DefaultOAuthInterceptor } from './pages/auth/auth.interceptors';
 import { AuthRepository } from './pages/auth/auth.repository';
 import { TenantComponent } from './pages/tenant/tenant.component';
 import { LoginComponent } from './pages/auth/login/login.component';
-import { LoggedInUIAccessDirective } from './ui-guards/logged-in-access.directive';
+import { LoggedInUIAccessDirective } from './shared/ui-guards/logged-in-access.directive';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -12,8 +13,8 @@ import { AppComponent } from './app.component';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { SwitchComponent } from './shared-components/switch/switch.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
+import { LoadingDirective } from './shared/loading/loading.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     LoginComponent,
     TenantComponent,
     LoggedInUIAccessDirective,
-    SwitchComponent
+    SwitchComponent,
+    LoadingDirective
   ],
   imports: [
     CommonModule,
