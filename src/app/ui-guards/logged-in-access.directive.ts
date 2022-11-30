@@ -7,11 +7,11 @@ import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
     selector: '[loggedInUIAccess]'
 })
 export class LoggedInUIAccessDirective {
-    @Input() set loggedInUIAccess(loggedIn: LoggedInCase) {
-        this.loggedIn = loggedIn;
+    @Input() set loggedInUIAccess(loggedInCase: LoggedInCase) {
+        this.loggedInCase = loggedInCase;
     }
 
-    loggedIn: LoggedInCase
+    loggedInCase: LoggedInCase
 
     private unsubscribe$ = new Subject();
     constructor(
@@ -23,8 +23,8 @@ export class LoggedInUIAccessDirective {
 
     ngOnInit() {
         this.authRepository.isLoggedIn$.pipe(takeUntil(this.unsubscribe$)).subscribe(isLoggedIn => {
-            if ((isLoggedIn && this.loggedIn === LoggedInCase.USER_LOGGED_IN) ||
-                (!isLoggedIn && this.loggedIn === LoggedInCase.USER_NOT_LOGGED_IN)) {
+            if ((isLoggedIn && this.loggedInCase === LoggedInCase.USER_LOGGED_IN) ||
+                (!isLoggedIn && this.loggedInCase === LoggedInCase.USER_NOT_LOGGED_IN)) {
                 this.viewContainer.createEmbeddedView(this.templateRef);
             } else {
                 this.viewContainer.clear();
