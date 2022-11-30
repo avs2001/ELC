@@ -23,16 +23,24 @@ export class AuthService {
     this.oAuthService.configure(environment.auth);
     this.oAuthService.tokenValidationHandler = new JwksValidationHandler();
     this.oAuthService.loadDiscoveryDocumentAndTryLogin().then(() => {
-      let token = this.oAuthService.getAccessToken();
-      this.authRepository.updateIsLoggedIn(!!token);
-      if(token){
+      if (this.tokenIsValid()) {
+        let token = this.oAuthService.getAccessToken();
+        this.authRepository.updateIsLoggedIn(!!token);
         this.getLoggedInUserProfileInfo().pipe(take(1)).subscribe();
+      } else {
+        this.login()
       }
     });
   }
 
-  async login() {
+  login() {
     this.oAuthService.initLoginFlow();
+  }
+
+  tokenIsValid() {
+    let hasValidAccessToken = this.oAuthService.hasValidAccessToken();
+    let hasValidIdToken = this.oAuthService.hasValidIdToken();
+    return hasValidAccessToken && hasValidIdToken
   }
 
   logout(): Promise<any> {
@@ -60,10 +68,10 @@ export class AuthService {
       switchMap((tenants: UserTenant[]) => {
         let firstTenantOrgId = tenants[0].organizationId;
         return this.getCommonInfo(String(firstTenantOrgId)).pipe(
-          map(commonInfo => ({tenants, commonInfo}))
+          map(commonInfo => ({ tenants, commonInfo }))
         )
       }),
-      tap((res)=>{
+      tap((res) => {
         this.authRepository.updateUserTenants(res.tenants)
         this.authRepository.updateCurrentTenant(res.commonInfo)
       })

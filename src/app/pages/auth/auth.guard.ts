@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { AuthRepository } from './auth.repository';
 import { Injectable } from '@angular/core';
@@ -9,13 +10,13 @@ import { Observable, take, map } from 'rxjs';
 })
 export class AuthGuard implements CanActivate {
     constructor(
-        private oAuthService: OAuthService
+        private authService: AuthService
     ) { }
 
     canActivate(
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        return !!this.oAuthService.getAccessToken();
+        return !!this.authService.tokenIsValid();
     }
 }

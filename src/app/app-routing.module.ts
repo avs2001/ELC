@@ -1,6 +1,6 @@
-import { AuthGuard } from './auth/auth.guard';
-import { TenantComponent } from './tenant/tenant.component';
-import { LoginComponent } from './auth/login/login.component';
+import { AuthGuard } from './pages/auth/auth.guard';
+import { TenantComponent } from './pages/tenant/tenant.component';
+import { LoginComponent } from './pages/auth/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
