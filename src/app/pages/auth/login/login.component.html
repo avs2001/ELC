@@ -6,6 +6,10 @@
     authorize
 </button>
 
+<button class="my-btn my-btn-auth" *loggedInUIAccess="LoggedInCase.USER_LOGGED_IN" (click)="impersonate()">
+    test dummy impersonate
+</button>
+
 <button class="my-btn my-btn-auth" *loggedInUIAccess="LoggedInCase.USER_LOGGED_IN" (click)="logout()">
     logout
 </button>

@@ -1,6 +1,7 @@
+import { DATE_NOW } from './tokens';
 import { SwitchComponent } from './shared/components/switch/switch.component';
 import { DefaultOAuthInterceptor } from './pages/auth/auth.interceptors';
-import { AuthRepository } from './pages/auth/auth.repository';
+import { AuthRepository, authStoreProvider } from './pages/auth/auth.repository';
 import { TenantComponent } from './pages/tenant/tenant.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { LoggedInUIAccessDirective } from './shared/ui-guards/logged-in-access.directive';
@@ -15,6 +16,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from "@angular/forms";
 import { LoadingDirective } from './shared/loading/loading.directive';
+import { dateDiff } from './const';
 
 @NgModule({
   declarations: [
@@ -34,9 +36,14 @@ import { LoadingDirective } from './shared/loading/loading.directive';
     OAuthModule.forRoot()
   ],
   providers: [
-    AuthRepository,
+    authStoreProvider,
+    {
+      provide: DATE_NOW,
+      useValue: new Date()
+    },
     { provide: HTTP_INTERCEPTORS, useClass: DefaultOAuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

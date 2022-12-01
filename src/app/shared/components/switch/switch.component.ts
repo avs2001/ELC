@@ -1,15 +1,12 @@
 import {
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ContentChild,
   ElementRef,
   EventEmitter,
   forwardRef,
   HostListener,
   Input,
   Output,
-  TemplateRef,
   ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -30,16 +27,11 @@ export class SwitchComponent implements ControlValueAccessor {
   @Input() value = true;
   @Output() valueChange = new EventEmitter<boolean>();
 
-  // eslint-disable-next-line @angular-eslint/no-input-rename
   @Input('readOnly') controlValueAccessorDisabled = true;
   private controlValueAccessorOnChange: (value: boolean) => void;
   private controlValueAccessorOnTouched: () => void;
 
   @ViewChild('inputElement') inputElement: ElementRef;
-
-  @HostListener('keydown.spacebar') handleSpace() {
-    this.updateValue();
-  }
 
   @HostListener('click') handleClick() {
     this.updateValue();
@@ -67,7 +59,6 @@ export class SwitchComponent implements ControlValueAccessor {
     this.inputElement.nativeElement.focus();
   }
 
-  // Control value accessor - start
   registerOnChange(fn: any): void {
     this.controlValueAccessorOnChange = fn;
   }
@@ -85,5 +76,5 @@ export class SwitchComponent implements ControlValueAccessor {
     this.value = value;
     this.cdr.markForCheck();
   }
-  // Control value accessor - end
+
 }

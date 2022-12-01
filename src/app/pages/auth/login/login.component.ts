@@ -3,6 +3,7 @@ import { AuthService } from './../auth.service';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { LoggedInCase } from '../auth.model';
+import { Subject, takeUntil } from 'rxjs'
 
 @Component({
   selector: 'kbm-login',
@@ -11,6 +12,7 @@ import { LoggedInCase } from '../auth.model';
 })
 export class LoginComponent {
   LoggedInCase = LoggedInCase;
+  unsubscribePersonaTimeExcited = new Subject();
   constructor(
     private authService: AuthService,
     private router: Router
@@ -20,6 +22,22 @@ export class LoginComponent {
 
   login() {
     this.authService.login()
+  }
+
+  impersonate() {
+    // here we will get a new user from somewhere
+    
+    this.authService.impersonateUser();
+    this.authService.personaTimeExcitedListener
+      .pipe(
+        takeUntil(this.unsubscribePersonaTimeExcited)
+      ).subscribe(res => {
+        if (res) {
+          // Do something
+          this.router.navigate(['/login'])
+          this.unsubscribePersonaTimeExcited.unsubscribe();
+        }
+      })
   }
 
   logout() {

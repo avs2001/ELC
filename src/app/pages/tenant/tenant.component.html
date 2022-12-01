@@ -12,7 +12,18 @@
 
 <div [kbmLoading]="!!!(authRepository.currentTenant$ | async)" class="tenant">
     <div *ngIf="showTenant">
-        {{authRepository.currentTenant$ | async | json}}
+        <div>
+            <b>Is Persona: </b>{{(authRepository.isPersona$ | async)}}
+        </div>
+        <div class="title">
+            Tenant Details
+        </div>
+        <div>
+            <b>First Name: </b>{{(authRepository.currentTenant$ | async)?.userInfo?.firstName}}
+        </div>
+        <div>
+            <b>Last Name: </b>{{(authRepository.currentTenant$ | async)?.userInfo?.lastName}}
+        </div>
     </div>
 </div>
 

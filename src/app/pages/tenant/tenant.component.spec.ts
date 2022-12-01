@@ -1,5 +1,4 @@
 import { RouterTestingModule } from '@angular/router/testing';
-import { SwitchComponent } from './../../shared-components/switch/switch.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthRepository } from './../auth/auth.repository';
 import { HarnessLoader } from '@angular/cdk/testing';
@@ -8,7 +7,8 @@ import { ButtonHarness } from 'src/app/shared/harnesses/button.harness';
 import { SwitchHarness } from 'src/app/shared/harnesses/switch.harness';
 
 import { TenantComponent } from './tenant.component';
-import {TestbedHarnessEnvironment} from "@angular/cdk/testing/testbed";
+import { TestbedHarnessEnvironment } from "@angular/cdk/testing/testbed";
+import { SwitchComponent } from 'src/app/shared/components/switch/switch.component';
 
 fdescribe('TenantComponent', () => {
   let component: TenantComponent;
@@ -44,7 +44,7 @@ fdescribe('TenantComponent', () => {
   });
 
   it('should reset the switch if we reset the form ', async () => {
-    
+
     const mySwitch = await loader.getHarness(SwitchHarness);
     const myButton = await loader.getHarness(ButtonHarness.with({
       text: 'Reset'

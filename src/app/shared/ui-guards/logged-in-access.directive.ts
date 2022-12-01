@@ -1,7 +1,8 @@
 import { AuthRepository } from '../../pages/auth/auth.repository';
 import { LoggedInCase } from '../../pages/auth/auth.model';
 import { take, Subject, takeUntil } from 'rxjs';
-import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, Inject, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import { USER_STORE } from 'src/app/tokens';
 
 @Directive({
     selector: '[loggedInUIAccess]'
@@ -17,7 +18,7 @@ export class LoggedInUIAccessDirective {
     constructor(
         private templateRef: TemplateRef<any>,
         private viewContainer: ViewContainerRef,
-        private authRepository: AuthRepository
+        @Inject(USER_STORE) private authRepository: AuthRepository
     ) {
     }
 

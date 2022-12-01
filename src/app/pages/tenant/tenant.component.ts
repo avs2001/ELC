@@ -1,13 +1,15 @@
 import { Router } from '@angular/router';
 import { CommonInfo } from './../auth/auth.model';
-import { AuthRepository } from './../auth/auth.repository';
-import { Component } from '@angular/core';
+import { AuthRepository, authStoreProvider } from './../auth/auth.repository';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { USER_STORE } from 'src/app/tokens';
 
 @Component({
   selector: 'kbm-tenant',
   templateUrl: './tenant.component.html',
-  styleUrls: ['./tenant.component.scss']
+  styleUrls: ['./tenant.component.scss'],
+  providers: [authStoreProvider]
 })
 export class TenantComponent {
   info?: CommonInfo;
@@ -16,7 +18,7 @@ export class TenantComponent {
   switchValue: boolean = true;
 
   constructor(
-    public authRepository: AuthRepository,
+    @Inject(USER_STORE) public authRepository: AuthRepository,
     private router: Router,
     private fb: FormBuilder
   ) {
