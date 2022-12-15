@@ -1,11 +1,17 @@
-import {Directive, TemplateRef} from '@angular/core';
-import {SubNavService} from "./sub-nav.service";
+import { Directive, TemplateRef, Input } from '@angular/core';
+import { OpenSlots } from './open-slot.interface';
+import { SubNavService } from "./sub-nav.service";
 
 @Directive({
   selector: '[kbmSubNav]',
   standalone: true
 })
 export class SubNavDirective {
+  openSlots: OpenSlots[] = [];
+  template: any
+  @Input() set kbmSubNav(openSlots: OpenSlots[]) {
+    this.openSlots = this.openSlots.concat(openSlots)
+  };
 
   constructor(
     readonly tpl: TemplateRef<any>,
@@ -13,12 +19,14 @@ export class SubNavDirective {
     this.template = tpl;
   }
 
-  set template(tpl: TemplateRef<any>) {
-    this.subNavService.tpl = tpl;
-  }
+  ngOnInit() {
+    if (this.openSlots.includes(OpenSlots.SUB_NAV_SLOT)) {
+      this.subNavService.tpl = this.template;
+    }
 
-  get template(): TemplateRef<any> {
-    return this.tpl;
+    if (this.openSlots.includes(OpenSlots.FOOTER_SLOT)) {
+      this.subNavService.tplFooter = this.template
+    }
   }
 
   ngOnDestroy(): void {
