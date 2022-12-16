@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {SubNavComponent} from "../sub-nav/sub-nav.component";
 import {RouterLink} from "@angular/router";
 import {OpenSlot} from "../open-slot";
-import {CdkPortalOutlet, PortalModule} from "@angular/cdk/portal";
+import {CdkPortalOutlet, DomPortalOutlet, PortalModule} from "@angular/cdk/portal";
 
 @Component({
   selector: 'kbm-layout',
@@ -16,5 +16,9 @@ import {CdkPortalOutlet, PortalModule} from "@angular/cdk/portal";
   ]
 })
 export class LayoutComponent implements OpenSlot {
-  @ViewChild(CdkPortalOutlet) navOpenSlot!: CdkPortalOutlet;
+  @ViewChild(DomPortalOutlet) navOpenSlot!: DomPortalOutlet;
+  @ViewChild(CdkPortalOutlet) footerOpenSlot!: DomPortalOutlet;
+
+  ngAfterViewInit() {
+  }
 }

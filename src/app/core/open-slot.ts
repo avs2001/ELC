@@ -1,5 +1,6 @@
-import {CdkPortalOutlet} from "@angular/cdk/portal";
+import { DomPortalOutlet } from "@angular/cdk/portal";
 
 export abstract class OpenSlot {
-  abstract navOpenSlot: CdkPortalOutlet;
+  abstract navOpenSlot: DomPortalOutlet;
+  abstract footerOpenSlot: DomPortalOutlet;
 }
