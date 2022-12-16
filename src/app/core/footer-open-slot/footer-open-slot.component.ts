@@ -5,14 +5,14 @@ import { CdkPortal, PortalModule } from "@angular/cdk/portal";
 import { OpenSlot } from "../open-slot";
 
 @Component({
-  selector: 'kbm-nav-open-slot',
+  selector: 'kbm-footer-open-slot',
   standalone: true,
   imports: [CommonModule, PortalModule],
-  templateUrl: './nav-open-slot.component.html',
-  styleUrls: ['./nav-open-slot.component.scss']
+  templateUrl: './footer-open-slot.component.html',
+  styleUrls: ['./footer-open-slot.component.scss']
 })
-export class NavOpenSlotComponent implements AfterViewInit, OnDestroy {
-
+export class FooterOpenSlotComponent implements AfterViewInit, OnDestroy {
+  
   @ViewChild(CdkPortal) portalContent!: CdkPortal;
   host = inject(OpenSlot);
 
@@ -21,11 +21,11 @@ export class NavOpenSlotComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.layoutService.setSubNavPortal(this.portalContent);
+    this.layoutService.setFooterPortal(this.portalContent);
   }
 
   ngOnDestroy(): void {
     this.portalContent.detach();
   }
-
 }
+

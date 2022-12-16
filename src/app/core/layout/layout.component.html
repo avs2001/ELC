@@ -1,5 +1,6 @@
 <nav class="toolbar">
-  <ng-template cdkPortalOutlet></ng-template>
+  <ng-template [cdkPortalOutlet]="subNavPortal$ | async"></ng-template>
+
 </nav>
 <kbm-sub-nav></kbm-sub-nav>
 <section class="wrapper">
@@ -16,3 +17,5 @@
 <section class="footer">
   Footer
 </section>
+
+<ng-template [cdkPortalOutlet]="footerPortal$ | async"></ng-template>

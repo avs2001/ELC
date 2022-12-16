@@ -1,5 +1,8 @@
-import {CdkPortalOutlet} from "@angular/cdk/portal";
+import { LayoutPortal } from './layout/layout.service';
+import { Observable } from 'rxjs';
 
 export abstract class OpenSlot {
-  abstract navOpenSlot: CdkPortalOutlet;
+  abstract subNavPortal$: Observable<LayoutPortal>;
+  abstract footerPortal$: Observable<LayoutPortal>;
+
 }
