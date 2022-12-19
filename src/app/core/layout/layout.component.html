@@ -1,13 +1,17 @@
-<nav class="toolbar">
-  <ng-template cdkPortalOutlet></ng-template>
-</nav>
-<kbm-sub-nav></kbm-sub-nav>
+<kbm-sub-nav>
+  <ng-template #navbarOutlet cdkPortalOutlet></ng-template>
+</kbm-sub-nav>
 <section class="wrapper">
   <aside>
-    <ul>
-      <li><a routerLink="/">Home</a></li>
-      <li><a routerLink="devices">Device</a></li>
-    </ul>
+    <div>
+      <ng-template #sidebarOutlet cdkPortalOutlet></ng-template>
+    </div>
+    <div>
+      <ul>
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="devices">Device</a></li>
+      </ul>
+    </div>
   </aside>
   <main>
     <ng-content></ng-content>

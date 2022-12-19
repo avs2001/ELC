@@ -16,5 +16,6 @@ import {CdkPortalOutlet, PortalModule} from "@angular/cdk/portal";
   ]
 })
 export class LayoutComponent implements OpenSlot {
-  @ViewChild(CdkPortalOutlet) navOpenSlot!: CdkPortalOutlet;
+  @ViewChild('sidebarOutlet',{read:CdkPortalOutlet}) sidebarOpenSlot!: CdkPortalOutlet;
+  @ViewChild('navbarOutlet',{read:CdkPortalOutlet}) navbarOpenSlot!: CdkPortalOutlet;
 }

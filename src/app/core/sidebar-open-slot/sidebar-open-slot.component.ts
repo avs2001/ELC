@@ -4,25 +4,23 @@ import {CdkPortal, PortalModule} from "@angular/cdk/portal";
 import {OpenSlot} from "../open-slot";
 
 @Component({
-  selector: 'kbm-nav-open-slot',
+  selector: 'kbm-sidebar-open-slot',
   standalone: true,
   imports: [CommonModule, PortalModule],
-  templateUrl: './nav-open-slot.component.html',
-  styleUrls: ['./nav-open-slot.component.scss']
+  templateUrl: './sidebar-open-slot.component.html',
+  styleUrls: ['./sidebar-open-slot.component.scss']
 })
-export class NavOpenSlotComponent implements AfterViewInit, OnDestroy {
-
+export class SidebarOpenSlotComponent implements AfterViewInit, OnDestroy {
   @ViewChild(CdkPortal) _testTpl!: CdkPortal;
   host = inject(OpenSlot);
 
   ngAfterViewInit(): void {
-    if (!this.host.navbarOpenSlot.hasAttached()) {
-      this.host.navbarOpenSlot.attach(this._testTpl);
+    if (!this.host.sidebarOpenSlot.hasAttached()) {
+      this.host.sidebarOpenSlot.attach(this._testTpl);
     }
   }
 
   ngOnDestroy(): void {
-    this.host.navbarOpenSlot.detach();
+    this.host.sidebarOpenSlot.detach();
   }
-
 }
