@@ -1,21 +1,18 @@
-import {Component, forwardRef, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SubNavComponent} from "../sub-nav/sub-nav.component";
-import {RouterLink} from "@angular/router";
-import {OpenSlot} from "../open-slot";
-import {CdkPortalOutlet, PortalModule} from "@angular/cdk/portal";
+import {DrawerComponent} from "../../shared/ui-components/drawer/drawer.component";
+import {SideComponent} from "../../shared/ui-components/side/side.component";
+import {ContentComponent} from "../../shared/ui-components/content/content.component";
+import {ToolbarComponent} from "../../shared/ui-components/toolbar/toolbar.component";
+import {WlSidebarComponent} from "../wl-sidebar/wl-sidebar.component";
 
 @Component({
   selector: 'kbm-layout',
   standalone: true,
-  imports: [CommonModule, SubNavComponent, RouterLink, PortalModule],
+  imports: [CommonModule, DrawerComponent, SideComponent, ContentComponent, ToolbarComponent, WlSidebarComponent],
   templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss'],
-  providers: [
-    {provide: OpenSlot, useExisting: forwardRef(() => LayoutComponent)}
-  ]
+  styleUrls: ['./layout.component.scss']
 })
-export class LayoutComponent implements OpenSlot {
-  @ViewChild('sidebarOutlet',{read:CdkPortalOutlet}) sidebarOpenSlot!: CdkPortalOutlet;
-  @ViewChild('navbarOutlet',{read:CdkPortalOutlet}) navbarOpenSlot!: CdkPortalOutlet;
+export class LayoutComponent {
+
 }

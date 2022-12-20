@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeviceSearchComponent } from './device-search.component';
+import { DrawerComponent } from './drawer.component';
 
-describe('DeviceSearchComponent', () => {
-  let component: DeviceSearchComponent;
-  let fixture: ComponentFixture<DeviceSearchComponent>;
+describe('DrawerComponent', () => {
+  let component: DrawerComponent;
+  let fixture: ComponentFixture<DrawerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ DeviceSearchComponent ]
+      imports: [ DrawerComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DeviceSearchComponent);
+    fixture = TestBed.createComponent(DrawerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

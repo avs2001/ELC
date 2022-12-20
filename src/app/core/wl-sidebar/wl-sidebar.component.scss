@@ -1,0 +1,55 @@
+:host {
+  &.opened {
+    a {
+      justify-content: flex-start;
+      padding: 16px;
+    }
+
+    .label {
+      display: inline-flex;
+    }
+
+    .icon {
+      width: auto;
+      height: auto;
+
+      &:before {
+        content: '♠';
+      }
+    }
+  }
+}
+
+
+nav {
+  display: flex;
+  flex-direction: column;
+
+  a {
+    display: flex;
+    flex-direction: row;
+    background: cadetblue;
+    border-bottom: 1px solid whitesmoke;
+    justify-content: flex-end;
+    color: whitesmoke;
+    text-decoration: none;
+  }
+}
+
+.label {
+  display: none;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+
+  &:before {
+    content: '♠';
+  }
+}
+
+

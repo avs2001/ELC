@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SubNavComponent } from './sub-nav.component';
+import { WlSidebarComponent } from './wl-sidebar.component';
 
-describe('SubNavComponent', () => {
-  let component: SubNavComponent;
-  let fixture: ComponentFixture<SubNavComponent>;
+describe('WlSidebarComponent', () => {
+  let component: WlSidebarComponent;
+  let fixture: ComponentFixture<WlSidebarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ SubNavComponent ]
+      imports: [ WlSidebarComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SubNavComponent);
+    fixture = TestBed.createComponent(WlSidebarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

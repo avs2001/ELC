@@ -1,22 +1,18 @@
-<kbm-sub-nav>
-  <ng-template #navbarOutlet cdkPortalOutlet></ng-template>
-</kbm-sub-nav>
-<section class="wrapper">
-  <aside>
-    <div>
-      <ng-template #sidebarOutlet cdkPortalOutlet></ng-template>
-    </div>
-    <div>
-      <ul>
-        <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="devices">Device</a></li>
-      </ul>
-    </div>
-  </aside>
-  <main>
-    <ng-content></ng-content>
-  </main>
-</section>
-<section class="footer">
-  Footer
-</section>
+<kbm-drawer #drawer="drawer" [open]="true" [width]="240" [collapsedWidth]="60">
+  <kbm-side>
+    <ng-template let-opened>
+      <kbm-wl-sidebar [open]="drawer.open"></kbm-wl-sidebar>
+    </ng-template>
+  </kbm-side>
+  <kbm-content>
+    <kbm-toolbar>
+      <div class="kbm-toolbar">
+        <h4>Main</h4>
+        <button (click)="drawer.toggle()">&times;</button>
+      </div>
+    </kbm-toolbar>
+    <main>
+      <ng-content></ng-content>
+    </main>
+  </kbm-content>
+</kbm-drawer>
